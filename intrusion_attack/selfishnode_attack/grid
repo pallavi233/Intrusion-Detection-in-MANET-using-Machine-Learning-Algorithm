@@ -1,0 +1,13 @@
+
+set nname 0;
+for {set i 0} {$i < 10 } { incr i } {
+for {set j 0} {$j < 10 } { incr j } {
+
+$n($nname) set X_ [expr { $i*50 }]
+$n($nname) set Y_ [expr { $j*50 }]
+$n($nname) set Z_ 0.0
+$ns node-config -ifqLen [expr $i*$j] 
+puts "node: $nname created at $i*50 $j*50"
+set nname [expr {$nname + 1}]
+}
+}

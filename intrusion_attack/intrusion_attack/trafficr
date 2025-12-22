@@ -1,0 +1,17 @@
+
+for {set j 0} {$j < $val(nn) } { incr j } {
+
+set pval [ expr { round(rand() * 999999) } ]
+set qval [ expr { round(rand() * 9999) } ]
+
+
+$ns_ at 0.0 "$ns_ trace-annotate \"Generating ECGDSA private key, 1024 bit long modulus\""
+$ns_ at 0.3450 "$ns_ trace-annotate \"Node ID :: $pval :: Password :: $qval\""
+puts "Generating ECGDSA private key, 1024 bit long modulus"
+exec openssl genrsa -out keys/$node_($j).pem 1024-rand &
+
+$ns_ at 0.3455 "$node_($j) label \"$pval :: $qval\""
+puts "Node ID :: $pval :: Password :: $qval"
+
+
+}
